@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Card {
 	
-	public Suit suit;
-	public Rank rank;
+	private Suit suit;
+	private Rank rank;
 	
 	public Card(Suit suit, Rank rank) {
 		super();

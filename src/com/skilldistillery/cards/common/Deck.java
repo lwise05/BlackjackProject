@@ -22,7 +22,11 @@ public class Deck {
 		}
 	}
 
-	public int checkDeckSize() {
+	public int size() {
+		return cards.size();
+	}
+	
+	public int cardsLeftInDeck() {
 		return cards.size();
 	}
 
@@ -33,5 +37,9 @@ public class Deck {
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
+	
+	
+	
+	
 
 }
