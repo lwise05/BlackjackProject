@@ -12,17 +12,16 @@ public class BlackjackHand extends AbstractHand {
 	}
 
 	public boolean isBlackjack() {
-
 		if (getHandValue() == 21) {
-			System.out.println("Black Jack! Card total is 21! ");
+			return true;
 		}
 		return false;
-
 	}
 
 	public boolean isBust() {
+//		return getHandValue() > 21 ? true : false;
 		if (getHandValue() > 21) {
-			System.out.println("Bust! Card total went over 21. You Lose. ");
+			return true;
 		}
 		return false;
 	}
@@ -39,5 +38,4 @@ public class BlackjackHand extends AbstractHand {
 		}
 		return handvalue;
 	}
-
 }

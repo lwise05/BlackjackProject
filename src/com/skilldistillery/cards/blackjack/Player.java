@@ -31,9 +31,10 @@ public class Player {
 	public boolean isBlackjack() {
 		return hand.isBlackjack();
 	}
-	
+
 	public boolean isBust() {
-			return hand.isBust();
+		return hand.isBust();
 	}
+
 
 }

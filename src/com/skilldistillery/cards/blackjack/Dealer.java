@@ -58,4 +58,11 @@ public class Dealer extends Player {
 		return hand.getHandValue();
 	}
 
+	public boolean isBlackjack() {
+		return hand.isBlackjack();
+	}
+
+	public boolean isBust() {
+		return hand.isBust();
+	}
 }
