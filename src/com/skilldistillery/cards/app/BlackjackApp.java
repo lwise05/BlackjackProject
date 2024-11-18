@@ -46,97 +46,115 @@ public class BlackjackApp {
 			System.out.println();
 			playerGetsCards();
 			// 4. method to check if dealer has bj or bust
-			if (dealer.isBlackjack()) {
-				System.out.println();
-				System.out.println("Blackjack! Dealer wins.");
-				System.out.println("Dealer's hand: ");
-				dealer.showHand();
-				System.out.println("Dealer's total: " + dealer.handValue());
+			
+			if (dealerIsBlackjackOrBust ()) {
 				winner = false;
 			}
-			if (dealer.isBust()) {
-				System.out.println();
-				System.out.println("Bust! Player wins");
-				System.out.println("Dealer's hand: ");
-				dealer.showHand();
-				System.out.println("Dealer's total: " + dealer.handValue());
-				System.out.println("Player's total: " + player.handValue());
-				winner = false;
-			}
+//			if (dealer.isBlackjack()) {
+//				System.out.println();
+//				System.out.println("Blackjack! Dealer wins.");
+//				System.out.println("Dealer's hand: ");
+//				dealer.showHand();
+//				System.out.println("Dealer's total: " + dealer.handValue());
+//				winner = false;
+//			}
+//			if (dealer.isBust()) {
+//				System.out.println();
+//				System.out.println("Bust! Player wins");
+//				System.out.println("Dealer's hand: ");
+//				dealer.showHand();
+//				System.out.println("Dealer's total: " + dealer.handValue());
+//				System.out.println("Player's total: " + player.handValue());
+//				winner = false;
+//			}
 
 			// 5.method to check if player has bj or bust
-			if (player.isBlackjack()) {
-				System.out.println();
-				System.out.println("Blackjack! Player wins.");
-				player.showHand();
+			if (playerIsBlackjackOrBust ()) {
 				winner = false;
 			}
-			if (player.isBust()) {
-				System.out.println();
-				System.out.println("Bust! Dealer wins");
-				player.showHand();
-				System.out.println("Player's total: " + player.handValue());
-				System.out.println("Dealer's hand: ");
-				dealer.showHand();
-				System.out.println("Dealer's total: " + dealer.handValue());
-				winner = false;
-			}
+			
+//			if (player.isBlackjack()) {
+//				System.out.println();
+//				System.out.println("Blackjack! Player wins.");
+//				player.showHand();
+//				winner = false;
+//			}
+//			if (player.isBust()) {
+//				System.out.println();
+//				System.out.println("Bust! Dealer wins");
+//				player.showHand();
+//				System.out.println("Player's total: " + player.handValue());
+//				System.out.println("Dealer's hand: ");
+//				dealer.showHand();
+//				System.out.println("Dealer's total: " + dealer.handValue());
+//				winner = false;
+//			}
+			
 			// 6. player hit or stay
 			if (player.handValue() < 20) {
 				hitOrStay();
 			}
 
 			// 7. method to check if player has bj or bust
-			if (player.isBlackjack()) {
-				System.out.println();
-				System.out.println("Blackjack! Player wins.");
-				player.showHand();
-				winner = false;
+			if (playerIsBlackjackOrBust ()) {
+				winner =false;
 			}
-			if (player.isBust()) {
-				System.out.println();
-				System.out.println("Bust! Dealer wins");
-				System.out.println("Player's total: " + player.handValue());
-				System.out.println("Dealer's hand: ");
-				dealer.showHand();
-				System.out.println("Dealer's total: " + dealer.handValue());
-				winner = false;
-			}
+//			if (player.isBlackjack()) {
+//				System.out.println();
+//				System.out.println("Blackjack! Player wins.");
+//				player.showHand();
+//				winner = false;
+//			}
+//			if (player.isBust()) {
+//				System.out.println();
+//				System.out.println("Bust! Dealer wins");
+//				System.out.println("Player's total: " + player.handValue());
+//				System.out.println("Dealer's hand: ");
+//				dealer.showHand();
+//				System.out.println("Dealer's total: " + dealer.handValue());
+//				winner = false;
+//			}
 			// 8. dealer hits or stays
 			
 			while (player.handValue() < 21 && dealer.handValue() < 17) {
 				System.out.println();
 				System.out.println("Dealer's hand: ");
 				dealer.showHand();
+				System.out.println("Dealer's total: " + dealer.handValue());
 				System.out.println("Dealer hits.");
 				dealer.hit(dealer.dealCard());
 				dealer.showHand();
 				System.out.println("Dealer's total: " + dealer.handValue());
 			}
 			if (dealer.handValue() > 17 && dealer.handValue() < 21) {
+				System.out.println("Dealer stays. ");
 				System.out.println();
 				System.out.println("Dealer's hand: ");
 				dealer.showHand();
 				System.out.println("Dealer's total: " + dealer.handValue());
-				System.out.println("Dealer stays. ");
+				
 			}
 			// 9. method to check if dealer has bj or bust
-			if (dealer.isBlackjack()) {
-				System.out.println();
-				System.out.println("Blackjack! Dealer wins.");
-				player.showHand();
+			
+			if (dealerIsBlackjackOrBust ()) {
 				winner = false;
 			}
-			if (dealer.isBust()) {
-				System.out.println();
-				System.out.println("Bust! Player wins");
-				System.out.println("Dealer's total: " + dealer.handValue());
-				System.out.println();
-				System.out.println("Player's hand:");
-				player.showHand();
-				System.out.println("Player's total: " + player.handValue());
-				winner = false;
-			}
+//			if (dealer.isBlackjack()) {
+//				System.out.println();
+//				System.out.println("Blackjack! Dealer wins.");
+//				player.showHand();
+//				winner = false;
+//			}
+//			if (dealer.isBust()) {
+//				System.out.println();
+//				System.out.println("Bust! Player wins");
+//				System.out.println("Dealer's total: " + dealer.handValue());
+//				System.out.println();
+//				System.out.println("Player's hand:");
+//				player.showHand();
+//				System.out.println("Player's total: " + player.handValue());
+//				winner = false;
+//			}
 			// 10. compare cards
 			compareHandValues();
 			winner = false;
@@ -217,8 +235,7 @@ public class BlackjackApp {
 			System.out.println();
 			System.out.println("Dealer's hand: ");
 			dealer.showHand();
-			System.out.println(
-					"Dealer's hand total: " + dealer.handValue() + " Player's hand total: " + player.handValue());
+			System.out.println("Dealer's hand total: " + dealer.handValue());
 		}
 		if (dealer.handValue() < player.handValue() && player.handValue() < 21) {
 			System.out.println();
@@ -226,8 +243,7 @@ public class BlackjackApp {
 			System.out.println();
 			System.out.println("Player's hand: ");
 			player.showHand();
-			System.out.println(
-					"Dealer's hand total: " + dealer.handValue() + " Player's hand total: " + player.handValue());
+			System.out.println("Player's hand total: " + player.handValue());
 		} else if (dealer.handValue() == player.handValue()) {
 			System.out.println();
 			System.out.println("Tie! Player and Dealer have same hand value. ");
@@ -242,5 +258,54 @@ public class BlackjackApp {
 
 		}
 	}
-
+	public boolean dealerIsBlackjackOrBust () {
+		if (dealer.isBlackjack()) {
+			System.out.println();
+			System.out.println("Blackjack! Dealer wins.");
+			System.out.println("Dealer's hand: ");
+			dealer.showHand();
+			System.out.println("Dealer's total: " + dealer.handValue());
+			return true;
+		}
+		if (dealer.isBust()) {
+			System.out.println();
+			System.out.println("Bust! Player wins");
+			System.out.println("Dealer's hand: ");
+			dealer.showHand();
+			System.out.println("Dealer's total: " + dealer.handValue());
+			System.out.println("Player's total: " + player.handValue());
+			return true;
+		}
+		else {
+			return false;
+	}
+		
+	}
+	
+	public boolean playerIsBlackjackOrBust () {
+		if (player.isBlackjack()) {
+			System.out.println();
+			System.out.println("Blackjack! Player wins.");
+			System.out.println("Player's hand: ");
+			player.showHand();
+			System.out.println("Player's total: " + player.handValue());
+			return true;
+		}
+		if (player.isBust()) {
+			System.out.println();
+			System.out.println("Bust! Dealer wins");
+			System.out.println("Player's hand: ");
+			player.showHand();
+			System.out.println("Player's total: " + player.handValue());
+			System.out.println();
+			System.out.println("Dealer's hand: ");
+			dealer.showHand();
+			System.out.println("Dealer's total: " + dealer.handValue());
+			return true;
+	}
+		else {
+			return false;
+		}
+		
+	}
 }
