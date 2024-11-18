@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.skilldistillery.cards.blackjack.Dealer;
 import com.skilldistillery.cards.blackjack.Player;
 import com.skilldistillery.cards.common.Card;
-import com.skilldistillery.cards.common.Deck;
 
 public class BlackjackApp {
 
@@ -34,32 +33,86 @@ public class BlackjackApp {
 		System.out.println("Let's play Blackjack! Enter 1 when you're ready to start. ");
 		int userReady = sc.nextInt();
 
-		player();
-		System.out.println();
 		dealer();
+		System.out.println();
+		player();
+//		hitStay();
 		hitOrStay();
+		dealerAfterPlayer();
 
 	}
 
 	public void player() {
+		boolean keepgoing = true;
 		dealer.shuffleDeck();
 		System.out.println("Player's hand: ");
 		player.hit(dealer.dealCard());
 		player.hit(dealer.dealCard());
 		player.showHand();
 		System.out.println("Player hand total: " + player.handValue());
+		while (keepgoing) {
+			if (dealer.isBlackjack()) {
+				System.out.println("Game over!");
+				keepgoing = false;
+			}
+			if (dealer.isBust()) {
+				System.out.println("Game over!");
+				keepgoing = false;
+			}
+			keepgoing = false;
 
+		}
 	}
 
 	public void dealer() {
+		boolean keepgoing = true;
 		dealer.shuffleDeck();
 		System.out.println("Dealer's hand: ");
-		dealer.dealCard();
-		Card card2 = dealer.dealCard();
+		System.out.println("Card faced down. ");
+		dealer.hit(dealer.dealCard());
 		dealer.showHand();
-		dealer.handValue();
-		System.out.println("Dealer hand: Card faced down. " + card2);
+		dealer.hit(dealer.dealCard());
+//		System.out.println("total: " + dealer.handValue());
+		while (keepgoing) {
+			if (dealer.isBlackjack()) {
+				dealer.showHand();
+				System.out.println("total: " + dealer.handValue());
+				System.out.println("Game over!");
+				keepgoing = false;
+			}
+			if (dealer.isBust()) {
+				System.out.println("Game over!");
+				dealer.showHand();
+				System.out.println("total: " + dealer.handValue());
+				keepgoing = false;
+			}
+			keepgoing = false;
+		}
+	}
 
+	public void dealerAfterPlayer() {
+		boolean keepgoing = true;
+		System.out.println();
+		dealer.showHand();
+		System.out.println(dealer.handValue());
+		while (keepgoing) {
+			if (dealer.is17()) {
+			}
+			if (dealer.isBlackjack()) {
+				System.out.println("Game over!");
+				dealer.showHand();
+				System.out.println("total: " + dealer.handValue());
+				keepgoing = false;
+			}
+			if (dealer.isBust()) {
+				System.out.println("Game over!");
+				dealer.showHand();
+				System.out.println("total: " + dealer.handValue());
+				keepgoing = false;
+			}
+			keepgoing = false;
+
+		}
 	}
 
 	public void hitOrStay() {
@@ -68,29 +121,66 @@ public class BlackjackApp {
 			System.out.println();
 			System.out.println("Player, enter 1 to hit or 2 to stay: ");
 			int hitOrStay = sc.nextInt();
-
-			if(hitOrStay !=1 || hitOrStay !=2) {
-				System.out.println("uh oh! Invalid entry, please enter 1 or 2. ");
-			}
-			if (hitOrStay == 1) {
-				dealer.shuffleDeck();
+			
+			if(hitOrStay == 1){
 				player.hit(dealer.dealCard());
 				player.showHand();
-				System.out.println(player.handValue());
-				if(player.isBlackjack()) {
-				}
-				if(player.isBust()) {
-					keepgoing = false;
-				}
-
+				System.out.println("Player hand total: " + player.handValue());
 			}
-			if (hitOrStay == 2) {
-				System.out.println();
-				System.out.println("You want to stay. Now it's the Dealer's turn. ");
+			if (player.isBlackjack()) {
+				player.showHand();
+				System.out.println("total: " + player.handValue());
+				System.out.println("Game over!");
 				keepgoing = false;
 			}
-			
+			if (player.isBust()) {
+				player.showHand();
+				System.out.println("total: " + player.handValue());
+				System.out.println("Game over!");
+				keepgoing = false;
+			}
+			else if (hitOrStay == 2) {
+				System.out.println("You want to stay. Now it's the dealer's turn. ");
+				keepgoing = false;
+			}
+			keepgoing = false;
+		}
+
+	}
+
+	public void hitStay() {
+		System.out.println();
+		System.out.println("Player, enter 1 to hit or 2 to stay: ");
+		int hitOrStay = sc.nextInt();
+
+		switch (hitOrStay) {
+		case 1:
+			dealer.shuffleDeck();
+			player.hit(dealer.dealCard());
+			player.showHand();
+			System.out.println(player.handValue());
+			if (player.isBlackjack()) {
+				System.out.println("Game over!");
+				player.showHand();
+				System.out.println("total: " + player.handValue());
+			System.out.println("Game over!");
+			break;
+			}
+			if (player.isBust()) {
+				System.out.println("Game over!");
+				player.showHand();
+				System.out.println("total: " + player.handValue());
+				break;
+			}
+		case 2:
+			System.out.println();
+			System.out.println("You want to stay. Now it's the Dealer's turn. ");
+			break;
+		default:
+			System.out.println("Oops! You entered an invalid option. Enter 1 or 2. ");
 		}
 	}
+
+	
 
 }

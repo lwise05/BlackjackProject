@@ -15,7 +15,6 @@ public class BlackjackHand extends AbstractHand {
 
 		if (getHandValue() == 21) {
 			System.out.println("Black Jack! Card total is 21! ");
-			return true;
 		}
 		return false;
 
@@ -23,8 +22,7 @@ public class BlackjackHand extends AbstractHand {
 
 	public boolean isBust() {
 		if (getHandValue() > 21) {
-			System.out.println("Bust! Card total went over 21. ");
-			return true;
+			System.out.println("Bust! Card total went over 21. You Lose. ");
 		}
 		return false;
 	}
