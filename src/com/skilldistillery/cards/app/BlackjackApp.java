@@ -38,22 +38,17 @@ public class BlackjackApp {
 			System.out.println();
 			playerGetsCards();
 			// 4. method to check if dealer has bj or bust
-			if (dealerIsBlackjackOrBust()) {
-				winner = false;
-			}
+			dealerIsBlackjackOrBust();
+			
 			// 5.method to check if player has bj or bust
-			if (playerIsBlackjackOrBust()) {
-				winner = false;
+			playerIsBlackjackOrBust();
 				
-			}
 			// 6. player hit or stay
 			if (dealer.handValue() <21 && player.handValue()< 21) {
 				hitOrStay();
 			}
 			// 7. method to check if player has bj or bust
-			if (playerIsBlackjackOrBust()) {
-				winner = false;
-			}
+			playerIsBlackjackOrBust();
 			// 8. dealer hits or stays
 			
 			if (player.handValue() <= 20) {
@@ -61,9 +56,7 @@ public class BlackjackApp {
 			}
 			
 			// 9. method to check if dealer has bj or bust
-			if (dealerIsBlackjackOrBust()) {
-				winner = false;
-			}
+			dealerIsBlackjackOrBust();
 			// 10. compare cards
 			compareHandValues();
 //			winner = false;
@@ -72,35 +65,15 @@ public class BlackjackApp {
 			if(continuePlaying()) {
 				winner = true;
 			}
+			else {
+				winner = false;
+			}
 		
-			
-			
+				
 		} while (winner);
 
 	}
 	
-	public boolean continuePlaying() {
-		System.out.println();
-		System.out.println("Would you like to play again? Enter 1 to play again or 2 to quit the game.");
-		int userReady = sc.nextInt();			
-		if (userReady == 1) {
-			System.out.println();
-			System.out.println("Dealer is shuffling and dealing new cards!");
-			System.out.println();
-			dealer.newGame();
-			player.newGame();
-			return true;
-		}
-		if (userReady == 2) {
-			System.out.println();
-			System.out.println("You are leaving the game! Bye-Bye!");
-			return false;
-		}
-		return false;
-		}
-
-		
-		
 	
 
 	public void dealerGetsCards() {
@@ -255,5 +228,25 @@ public class BlackjackApp {
 
 		}
 	}
+	
+	public boolean continuePlaying() {
+		System.out.println();
+		System.out.println("Would you like to play again? Enter 1 to play again or 2 to quit the game.");
+		int userReady = sc.nextInt();			
+		if (userReady == 1) {
+			System.out.println();
+			System.out.println("Dealer is shuffling and dealing new cards!");
+			System.out.println();
+			dealer.newGame();
+			player.newGame();
+			return true;
+		}
+		if (userReady == 2) {
+			System.out.println();
+			System.out.println("You are leaving the game! Bye-Bye!");
+			return false;
+		}
+		return false;
+		}
 
 }
