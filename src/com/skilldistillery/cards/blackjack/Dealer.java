@@ -21,25 +21,6 @@ public class Dealer extends Player {
 		hand.addCard(card);
 	}
 
-//	public void rule17(Card card) {
-//		if (handValue() < 17) {
-//			hit(card);
-//		} else {
-//			System.out.println("I'll stay. ");
-//
-//		}
-//	}
-	
-	public boolean is17() {
-		if (handValue() < 17) {
-			hit(dealCard());
-		}
-		else {
-			System.out.println("I'll stay");
-		}
-	
-		return false;
-	}
 
 	public void newGame() {
 		hand.clear();

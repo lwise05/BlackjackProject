@@ -44,6 +44,7 @@ public class BlackjackApp {
 			// 5.method to check if player has bj or bust
 			if (playerIsBlackjackOrBust()) {
 				winner = false;
+				
 			}
 			// 6. player hit or stay
 			if (dealer.handValue() <21 && player.handValue()< 21) {
@@ -54,19 +55,53 @@ public class BlackjackApp {
 				winner = false;
 			}
 			// 8. dealer hits or stays
+			
 			if (player.handValue() <= 20) {
 				rule17();
 			}
+			
 			// 9. method to check if dealer has bj or bust
 			if (dealerIsBlackjackOrBust()) {
 				winner = false;
 			}
 			// 10. compare cards
 			compareHandValues();
-			winner = false;
+//			winner = false;
+			
+			// 11. continue playing
+			if(continuePlaying()) {
+				winner = true;
+			}
+		
+			
+			
 		} while (winner);
 
 	}
+	
+	public boolean continuePlaying() {
+		System.out.println();
+		System.out.println("Would you like to play again? Enter 1 to play again or 2 to quit the game.");
+		int userReady = sc.nextInt();			
+		if (userReady == 1) {
+			System.out.println();
+			System.out.println("Dealer is shuffling and dealing new cards!");
+			System.out.println();
+			dealer.newGame();
+			player.newGame();
+			return true;
+		}
+		if (userReady == 2) {
+			System.out.println();
+			System.out.println("You are leaving the game! Bye-Bye!");
+			return false;
+		}
+		return false;
+		}
+
+		
+		
+	
 
 	public void dealerGetsCards() {
 		System.out.println("Dealer's hand: ");
@@ -198,7 +233,7 @@ public class BlackjackApp {
 		dealer.showHand();
 		System.out.println("Dealer's total: " + dealer.handValue());
 		while (keepgoing) {
-			if (player.handValue() < 20 && dealer.handValue() < 17) {
+			if (dealer.handValue() < 17) {
 
 				System.out.println();
 				System.out.println("Dealer hits.");
@@ -213,7 +248,7 @@ public class BlackjackApp {
 				break;
 			}
 
-			if (dealer.handValue() >= 21) {
+			else if (dealer.handValue() >= 21) {
 				keepgoing = false;
 				break;
 			}

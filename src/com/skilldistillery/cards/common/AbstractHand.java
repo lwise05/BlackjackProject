@@ -15,9 +15,10 @@ public abstract class AbstractHand {
 		cardsInHand.add(card);
 	}
 
-	public void clear() {
+	public List<Card> clear() {
 		// create new array??
-		List<Card> newdeck = new ArrayList<>();
+		cardsInHand = new ArrayList<>();
+		return cardsInHand;
 	}
 
 	public abstract int getHandValue();
@@ -30,6 +31,7 @@ public abstract class AbstractHand {
 	public void showHand() {
 		for (Card card : cardsInHand) {
 			System.out.println(card);
+			
 		}
 
 	}
