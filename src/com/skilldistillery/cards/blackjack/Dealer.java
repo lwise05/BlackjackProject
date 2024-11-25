@@ -48,8 +48,9 @@ public class Dealer extends Player {
 	}
 	
 	public boolean checkDeck() {
-		if(deck.cardsLeftInDeck() < 8) {
-			System.out.println("Only " + deck.cardsLeftInDeck() + " cards left in deck. \nNot enough cards for another game. \nExiting the game. \nThanks for playing! Good-bye!");
+		if(deck.cardsLeftInDeck() <= 10) {
+			newDeck();
+			System.out.println(deck.cardsLeftInDeck());
 			return true;
 		}
 		return false;
@@ -58,4 +59,8 @@ public class Dealer extends Player {
 	public int cardsLeftInDeck() {
 		return deck.cardsLeftInDeck();
 	}
+	
+	public void newDeck() {
+		deck = new Deck();
+		}
 }

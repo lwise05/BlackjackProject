@@ -53,7 +53,6 @@ public class BlackjackApp {
 			if (player.handValue() <= 20) {
 				rule17();
 			}
-			
 			// 9. method to check if dealer has bj or bust
 			dealerIsBlackjackOrBust();
 			// 10. compare cards
@@ -66,10 +65,8 @@ public class BlackjackApp {
 			else {
 				winner = false;
 			}
+			// 12. add new deck if <=10 cards
 			if(dealer.checkDeck()) {
-				winner = false;
-			}
-			else {
 				winner = true;
 			}
 				
