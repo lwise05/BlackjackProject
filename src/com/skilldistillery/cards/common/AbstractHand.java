@@ -35,5 +35,6 @@ public abstract class AbstractHand {
 		}
 
 	}
+	
 
 }

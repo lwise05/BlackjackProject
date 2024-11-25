@@ -34,8 +34,7 @@ public class BlackjackApp {
 			dealer.shuffleDeck();
 			// 2.dealer deals cards to self
 			dealerGetsCards();
-			// 3. dealer deals cards to player
-			System.out.println();
+			// 3. dealer deals cards to player;
 			playerGetsCards();
 			// 4. method to check if dealer has bj or bust
 			dealerIsBlackjackOrBust();
@@ -59,7 +58,6 @@ public class BlackjackApp {
 			dealerIsBlackjackOrBust();
 			// 10. compare cards
 			compareHandValues();
-//			winner = false;
 			
 			// 11. continue playing
 			if(continuePlaying()) {
@@ -68,7 +66,12 @@ public class BlackjackApp {
 			else {
 				winner = false;
 			}
-		
+			if(dealer.checkDeck()) {
+				winner = false;
+			}
+			else {
+				winner = true;
+			}
 				
 		} while (winner);
 
@@ -82,9 +85,10 @@ public class BlackjackApp {
 		dealer.hit(dealer.dealCard());
 		dealer.showHand();
 		dealer.hit(dealer.dealCard());
-	}
+		}
 
 	public void playerGetsCards() {
+		System.out.println();
 		System.out.println("Player's hand: ");
 		player.hit(dealer.dealCard());
 		player.hit(dealer.dealCard());
@@ -243,7 +247,7 @@ public class BlackjackApp {
 		}
 		if (userReady == 2) {
 			System.out.println();
-			System.out.println("You are leaving the game! Bye-Bye!");
+			System.out.println("You are now leaving the game. Thanks for playing! \nBye-Bye!");
 			return false;
 		}
 		return false;
